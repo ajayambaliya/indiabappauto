@@ -123,76 +123,175 @@ def translate_to_gujarati(text, retries=3, delay=5):
 
 def format_html_content(questions, formatted_date):
     """Format content as HTML with date and responsive design."""
-    # First, add the date clearly at the top
+    # First, add the date clearly at the top with improved styling
     html_content = f"""
-    <div style="text-align: center; font-size: 24px; margin: 20px 0; padding: 10px; background-color: #f8f9fa; border-radius: 8px;">
+    <div style="text-align: center; font-size: 22px; font-weight: 600; margin: 20px auto; padding: 12px; max-width: 800px; 
+                background-color: white; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); color: #1a237e; 
+                position: relative; overflow: hidden; border-left: 4px solid #ffa000;">
         📅 {formatted_date}
     </div>
     """
     
-    # Add CSS styles for the rest of the content
+    # Add enhanced CSS styles for the rest of the content
     html_content += """
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@400;500;600;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Hind Vadodara', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            background-attachment: fixed;
+        }
+        
         .qa-container {
             max-width: 800px;
-            margin: 0 auto;
-            padding: 15px;
-            font-family: Arial, sans-serif;
+            margin: 0 auto 40px;
+            padding: 20px 15px;
+            font-family: 'Hind Vadodara', Arial, sans-serif;
         }
-        .question-box {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
+        
+        .title-header {
+            text-align: center;
+            margin-bottom: 30px;
             padding: 20px;
+            background-color: #1a237e;
+            background-image: linear-gradient(135deg, #1a237e 0%, #534bae 100%);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
         }
+        
+        .title-header h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .title-header p {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .question-box {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            border-left: 4px solid #1a237e;
+        }
+        
         .question-header {
             color: #1a237e;
-            font-size: 18px;
-            margin-bottom: 15px;
-            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
         }
+        
         .option-box {
-            padding: 10px;
-            margin: 5px 0;
+            padding: 12px 15px;
+            margin: 8px 0;
             background-color: #f8f9fa;
-            border-radius: 4px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            font-weight: 500;
         }
+        
+        .option-box:hover {
+            background-color: #eef1f5;
+            border-left-color: #aab7c4;
+        }
+        
         .correct-answer {
             background-color: #e8f5e9;
             color: #2e7d32;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 4px;
+            padding: 12px 15px;
+            margin: 12px 0;
+            border-radius: 8px;
+            font-weight: 600;
+            border-left: 3px solid #2e7d32;
         }
+        
+        .correct-answer strong {
+            color: #2e7d32;
+            display: block;
+            margin-bottom: 6px;
+        }
+        
         .explanation-box {
-            background-color: #fff3e0;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 4px;
+            background-color: #fff8e1;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 3px solid #ffa000;
         }
+        
+        .explanation-box strong {
+            color: #c67100;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
         @media (max-width: 600px) {
             .qa-container {
-                padding: 10px;
+                padding: 15px 10px;
             }
             .question-box {
-                padding: 15px;
+                padding: 20px 15px;
             }
+            .question-header {
+                font-size: 18px;
+            }
+            .title-header h2 {
+                font-size: 24px;
+            }
+            .title-header p {
+                font-size: 16px;
+            }
+        }
+        
+        /* Add a fancy footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 14px;
+            margin-top: 20px;
+            background-color: rgba(255,255,255,0.7);
+            border-radius: 8px;
         }
     </style>
     <div class="qa-container">
     """
-
-    # Add total questions count
+    
+    # Add total questions count with enhanced styling
     total_questions = len(questions)
     html_content += f"""
-    <div style="text-align: center; margin-bottom: 20px; padding: 10px; background-color: #1a237e; color: white; border-radius: 8px;">
+    <div class="title-header">
         <h2>📚 ગુજરાતી કરંટ અફેર્સ</h2>
         <p>કુલ પ્રશ્નો: {total_questions}</p>
     </div>
     """
-
-    # Add each question
+    
+    # Add each question with improved styling
     for idx, question in enumerate(questions, 1):
         translated_question = translate_to_gujarati(question['question_text'])
         translated_answer = translate_to_gujarati(question['correct_answer'])
@@ -201,12 +300,12 @@ def format_html_content(questions, formatted_date):
         html_content += f"""
         <div class="question-box">
             <div class="question-header">📝 પ્રશ્ન {idx}</div>
-            <div style="margin-bottom: 15px;">{translated_question}</div>
+            <div style="margin-bottom: 15px; font-size: 17px; line-height: 1.7; font-weight: 500;">{translated_question}</div>
             
-            <div style="margin: 15px 0;">
+            <div style="margin: 20px 0;">
         """
         
-        # Add options
+        # Add options with improved styling
         for option_key, option_value in question['options'].items():
             translated_option = translate_to_gujarati(option_value)
             is_correct = option_value == question['correct_answer']
@@ -216,7 +315,7 @@ def format_html_content(questions, formatted_date):
                     {option_key}) {translated_option}
                 </div>
             """
-
+        
         html_content += f"""
             </div>
             <div class="correct-answer">
@@ -228,8 +327,15 @@ def format_html_content(questions, formatted_date):
         </div>
         """
         time.sleep(1)
-
-    html_content += "</div>"
+    
+    # Add a nice footer
+    html_content += """
+        <div class="footer">
+            આભાર! આશા રાખીએ છીએ કે આ પ્રશ્નો તમારા અભ્યાસમાં મદદરૂપ થશે.
+        </div>
+    </div>
+    """
+    
     return html_content
 
 def insert_news(connection, news_title, news_description, news_image, news_date):
@@ -240,7 +346,7 @@ def insert_news(connection, news_title, news_description, news_image, news_date)
     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
 
-    data = (1, news_title, news_date, news_description, news_image, 10, "", "", "Post", "", 0, datetime.now())
+    data = (1, news_title, news_date, news_description, news_image, 1, "", "", "Post", "", 0, datetime.now())
 
     try:
         connection = create_mysql_connection()
