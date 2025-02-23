@@ -28,11 +28,10 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHANNEL_USERNAME = os.getenv("CHANNEL_USERNAME")
 APP_LINK = os.getenv("APP_LINK")
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+# Firebase configuration from GitHub Secrets
+FIREBASE_SERVICE_ACCOUNT = os.getenv("FIREBASE_SERVICE_ACCOUNT")
+FCM_NOTIFICATION_TOPIC = os.getenv("FCM_NOTIFICATION_TOPIC")
 
-print(f"MYSQL_HOST: {MYSQL_HOST}")
-print(f"MYSQL_USER: {MYSQL_USER}")
-print(f"MYSQL_PASSWORD: {MYSQL_PASSWORD}")
-print(f"MYSQL_DATABASE: {MYSQL_DATABASE}")
 
 class FirebaseNotificationSender:
     def __init__(self, service_account_json=None, topic=None):
