@@ -33,5 +33,7 @@ jobs:
         BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
         CHANNEL_USERNAME: ${{ secrets.CHANNEL_USERNAME }}
         APP_LINK: ${{ secrets.APP_LINK }}
+        FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        FCM_NOTIFICATION_TOPIC: ${{ secrets.FCM_NOTIFICATION_TOPIC }}
       run: |
         python main.py
