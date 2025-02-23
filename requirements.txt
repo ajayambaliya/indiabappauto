@@ -3,4 +3,6 @@ mysql-connector-python
 pymongo
 beautifulsoup4
 deep-translator
-pyTelegramBotAPI
+telebot
+python-dotenv
+firebase-admin
