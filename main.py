@@ -15,7 +15,6 @@ from dotenv import load_dotenv
 import firebase_admin
 from firebase_admin import credentials, messaging
 
-load_dotenv()
 MONGO_URI = os.getenv("MONGO_URI")
 mongo_client = pymongo.MongoClient(MONGO_URI)
 db = mongo_client["CurrentAffairs"]
