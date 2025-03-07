@@ -273,7 +273,7 @@ def insert_news(connection, news_title, news_description, news_image, news_date)
                          news_status, video_url, video_id, content_type, size, view_count, last_update)
     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
-    data = (1, news_title, news_date, news_description, news_image, 10, "", "", "Post", "", 0, datetime.now())
+    data = (10, news_title, news_date, news_description, news_image, 1, "", "", "Post", "", 0, datetime.now())
     try:
         if not connection or not connection.is_connected():
             print("⚠️ MySQL connection lost or not available, attempting to reconnect...")
@@ -357,7 +357,7 @@ def main():
 
         html_content = format_html_content(questions, formatted_date)
         news_title = f"{formatted_date} Gujarati Current Affairs"
-        image_name = f"{formatted_date}.png"
+        image_name = f"{formatted_date}.jpg"
 
         news_id = insert_news(connection, news_title, html_content, image_name, news_date)
         if news_id:
