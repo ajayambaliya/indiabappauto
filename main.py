@@ -273,7 +273,7 @@ def insert_news(connection, news_title, news_description, news_image, news_date)
                          news_status, video_url, video_id, content_type, size, view_count, last_update)
     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
-    data = (1, news_title, news_date, news_description, news_image, 1, "", "", "Post", "", 0, datetime.now())
+    data = (1, news_title, news_date, news_description, news_image, 10, "", "", "Post", "", 0, datetime.now())
     try:
         if not connection or not connection.is_connected():
             print("⚠️ MySQL connection lost or not available, attempting to reconnect...")
